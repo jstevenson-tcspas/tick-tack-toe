@@ -12,7 +12,7 @@ board = ["[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]"]
 # index: 0    1   2   3   4   5   6   7   8
 
 choice = input("X or 0? >")
-if choice == "X":
+if choice == "X" or choice == "x":
     p1 = "X"
     p2 = "0"
     print('''
@@ -20,7 +20,7 @@ if choice == "X":
 Team X 
 ------
     ''')
-else:
+elif choice =="0":
     p1 = "0"
     p2 = "X"
     print('''
@@ -40,5 +40,6 @@ def grid():
 grid()
 
 
-pos = input("where do you want to place it?\n>")
-if pos == 
+pos = int(input("where do you want to place it?\n>"))
+board[pos] ="["+p1+"]"
+grid()
