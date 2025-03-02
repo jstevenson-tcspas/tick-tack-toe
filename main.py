@@ -1,4 +1,4 @@
-
+import random
 print ('''
 ------------   
 TIC TACK TOE
@@ -39,7 +39,13 @@ def grid():
     
 grid()
 
+while True:
+    pos = int(input("where do you want to place it?\n>"))
+    if board[pos] == "[ ]":
+        board[pos] ="["+p1+"]"
+    grid()
+    place = random.randint(0,8)
+    board[place] ="["+p2+"]"
+    grid()
 
-pos = int(input("where do you want to place it?\n>"))
-board[pos] ="["+p1+"]"
-grid()
+    
