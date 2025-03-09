@@ -28,7 +28,10 @@ elif choice =="0":
 Team 0
 ------
     ''')
-
+def check_winner(symbol):
+    win_patterns= [
+        [0, 1, 2], [3, 4, 5],[6, 7, 8]
+    ]
 def grid():
     print("------------------------")
     print(" ".join(board[0:3]))
@@ -47,5 +50,7 @@ while True:
     place = random.randint(0,8)
     board[place] ="["+p2+"]"
     grid()
+    # if board[pos] == "[x] [x] [x]":
+    #     print("You win!")
 
     
