@@ -10,8 +10,13 @@ p2 = ""
 
 board = ["[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]"]
 # index: 0    1   2   3   4   5   6   7   8
-
 choice = input("X or 0? >")
+
+
+
+while choice != "X" and choice != "x" and choice != "0":
+    choice = input("Wrong answer. Please choose again> ")
+
 if choice == "X" or choice == "x":
     p1 = "X"
     p2 = "0"
@@ -28,10 +33,17 @@ elif choice =="0":
 Team 0
 ------
     ''')
+
+    
 def check_winner(symbol):
-    win_patterns= [
-        [0, 1, 2], [3, 4, 5],[6, 7, 8]
-    ]
+    if board[0] == board[1] and board[0] == board[2] and board[0] != "[ ]":
+        return True
+    if board[3] == board[4] and board[3] == board[5] and board[3] != "[ ]":
+        return True
+    if board[6] == board[7] and board[6] == board[8] and board[6] != "[ ]":
+        return True
+
+    
 def grid():
     print("------------------------")
     print(" ".join(board[0:3]))
@@ -52,5 +64,3 @@ while True:
     grid()
     # if board[pos] == "[x] [x] [x]":
     #     print("You win!")
-
-    
