@@ -42,6 +42,13 @@ def check_winner(symbol):
         return True
     if board[6] == board[7] and board[6] == board[8] and board[6] != "[ ]":
         return True
+    if board[0] == board[3] and board[0] == board[6] and board[0] != "[ ]":
+        return True
+    if board[2] == board[5] and board[2] == board[8] and board[2] != "[ ]":
+        return True
+    if board[0] == board[4] and board[0] == board[8] and board[0] != "[ ]":
+        return True
+
 
     
 def grid():
@@ -56,10 +63,14 @@ grid()
 
 while True:
     pos = int(input("where do you want to place it?\n>"))
-    if board[pos] == "[ ]":
-        board[pos] ="["+p1+"]"
+    while board[pos] != "[ ]":
+        pos = int(input("Please choose an empty position: "))
+    board[pos] ="["+p1+"]"
     grid()
+
     place = random.randint(0,8)
+    while board[place] != "[ ]":
+        place = random.randint(0,8)
     board[place] ="["+p2+"]"
     grid()
     # if board[pos] == "[x] [x] [x]":
