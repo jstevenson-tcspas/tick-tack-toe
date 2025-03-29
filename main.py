@@ -35,7 +35,7 @@ Team 0
     ''')
 
     
-def check_winner(symbol):
+def check_winner():
     if board[0] == board[1] and board[0] == board[2] and board[0] != "[ ]":
         return True
     if board[3] == board[4] and board[3] == board[5] and board[3] != "[ ]":
@@ -44,10 +44,15 @@ def check_winner(symbol):
         return True
     if board[0] == board[3] and board[0] == board[6] and board[0] != "[ ]":
         return True
+    if board[1] == board[4] and board[1] == board[7] and board[1] != "[ ]":
+        return True
     if board[2] == board[5] and board[2] == board[8] and board[2] != "[ ]":
         return True
     if board[0] == board[4] and board[0] == board[8] and board[0] != "[ ]":
         return True
+    if board[6] == board[4] and board[6] == board[2] and board[6] != "[ ]":
+        return True
+    return False
 
 
     
@@ -67,11 +72,18 @@ while True:
         pos = int(input("Please choose an empty position: "))
     board[pos] ="["+p1+"]"
     grid()
-
+    if check_winner() == True:
+        print("you win")
+        exit()
+   
     place = random.randint(0,8)
     while board[place] != "[ ]":
         place = random.randint(0,8)
     board[place] ="["+p2+"]"
     grid()
+    if check_winner() == True:
+        print("cpu wins")
+        exit()
+    
     # if board[pos] == "[x] [x] [x]":
     #     print("You win!")
