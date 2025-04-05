@@ -10,27 +10,25 @@ p2 = ""
 
 board = ["[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]"]
 # index: 0    1   2   3   4   5   6   7   8
-choice = input("X or 0? >")
+choice = input("X or O? >")
 
-
-
-while choice != "X" and choice != "x" and choice != "0":
+while choice != "X" and choice != "x" and choice != "O":
     choice = input("Wrong answer. Please choose again> ")
 
 if choice == "X" or choice == "x":
     p1 = "X"
-    p2 = "0"
+    p2 = "O"
     print('''
 ------   
 Team X 
 ------
     ''')
-elif choice =="0":
-    p1 = "0"
+elif choice =="O":
+    p1 = "O"
     p2 = "X"
     print('''
 ------
-Team 0
+Team O
 ------
     ''')
 
@@ -75,7 +73,9 @@ while True:
     if check_winner() == True:
         print("you win")
         exit()
-   
+    if "[ ]" not in board:
+        print("you drawed")
+        exit()
     place = random.randint(0,8)
     while board[place] != "[ ]":
         place = random.randint(0,8)
