@@ -51,7 +51,8 @@ def check_winner():
     if board[6] == board[4] and board[6] == board[2] and board[6] != "[ ]":
         return True
     return False
-
+cpu_score = 0
+player_score = 0
 
     
 def grid():
@@ -64,18 +65,21 @@ def grid():
     
 grid()
 
-while True:
-    pos = int(input("where do you want to place it?\n>"))
-    while board[pos] != "[ ]":
+while cpu_score < 5 or player_score < 5:
+    pos = input("where do you want to place it?\n>")
+    while pos not in "012345678":
+        pos = input("Please choose a valid answer: ")
+    while board[int(pos)] != "[ ]":
         pos = int(input("Please choose an empty position: "))
-    board[pos] ="["+p1+"]"
+    board[int(pos)] ="["+p1+"]"
     grid()
     if check_winner() == True:
         print("you win")
-        exit()
+        player_score += 1
+        board = ["[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]"]
     if "[ ]" not in board:
         print("you drawed")
-        exit()
+        board = ["[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]"]
     place = random.randint(0,8)
     while board[place] != "[ ]":
         place = random.randint(0,8)
@@ -83,7 +87,19 @@ while True:
     grid()
     if check_winner() == True:
         print("cpu wins")
-        exit()
+        cpu_score += 1
+        board = ["[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]"]
+    if "[ ]" not in board:
+        print("you drawed")
+        board = ["[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]"]
     
-    # if board[pos] == "[x] [x] [x]":
-    #     print("You win!")
+    
+print('''                               Final scores!
+                -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -
+    
+                                        player_score:{}
+                -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -
+                                        cpu_score:{}
+                -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -
+            
+    '''.format(player_score, cpu_score))
