@@ -65,10 +65,11 @@ def grid():
     
 grid()
 
-while cpu_score < 5 or player_score < 5:
+while cpu_score < 5 and player_score < 5:
     pos = input("where do you want to place it?\n>")
-    while pos not in "012345678":
+    while pos not in "012345678" or len(str(pos)) != 1:
         pos = input("Please choose a valid answer: ")
+
     while board[int(pos)] != "[ ]":
         pos = int(input("Please choose an empty position: "))
     board[int(pos)] ="["+p1+"]"
@@ -93,8 +94,9 @@ while cpu_score < 5 or player_score < 5:
         print("you drawed")
         board = ["[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]"]
     
+    print(cpu_score, player_score)
     
-print('''                               Final scores!
+print('''                            Final scores!
                 -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -
     
                                         player_score:{}
